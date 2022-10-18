@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>SNAB - Error-{{data.code}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+  </head>
+  <body>
+    <h1>SNAB - Error-{{data.code}}: {{data.name}}</h1>
+    <p>Oops! An error has occured. {{data.description}}</p>
+    <p>Made with ❤️ by Sakthi Santhosh.</p>
+</html>
