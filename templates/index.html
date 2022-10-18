@@ -4,9 +4,118 @@
     <title>SNAB - Home Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
   </head>
+  <style>
+    body {
+      font-family: system-ui;
+    }
+    table, th, td {
+      padding: 10px;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
   <body>
     <h1>SNAB - Project Backend Home Page</h1>
+    <p>
+      Welcome to the homepage of SNAB project backend. The frontend of this
+      project can be accessed from
+      <a href="https://whimsical-gumdrop-d12239.netlify.app/">here</a>.
+    </p>
     <p>Made with ❤️ by Sakthi Santhosh.</p>
+    <h2>API Description</h2>
+    <table>
+      <tr>
+        <th>API Endpoint</th>
+        <th>HTTP Method</th>
+        <th>Request Body</th>
+        <th>Response Body</th>
+      </tr>
+      <tr>
+        <td>/get</td>
+        <td>GET</td>
+        <td><code>None</code></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td>/get</td>
+        <td>POST</td>
+        <td><code>{<br>&nbsp<i>&ltsearch_field&gt</i>: string<br>}</code></td>
+        <td>
+          <code>
+            {<br>&nbspaddress: string<br>
+            &nbspdob: string<br>
+            &nbspemail: string<br>
+            &nbspname: string<br>
+            &nbsppassword: string<br>
+            &nbspphone: string<br>
+            &nbspuuid: string<br>}
+          </code>
+        </td>
+      </tr>
+      <tr>
+        <td>/post</td>
+        <td>POST</td>
+        <td>
+          <code>
+            {<br>&nbspaddress: string<br>
+            &nbspdob: string<br>
+            &nbspemail: string<br>
+            &nbspname: string<br>
+            &nbsppassword: string<br>
+            &nbspphone: string<br>}
+          </code>
+        </td>
+        <td>
+          <b>Success:</b><br>
+          <code>{<br>&nbsppost: true<br>}<br></code>
+          <b>Error:</b><br>
+          <code><br>&nbsppost: false<br>&nbspdescription: string<br>}</code>
+        </td>
+      </tr>
+      <tr>
+        <td>/patch</td>
+        <td>PATCH</td>
+        <td><code>{<br>&nbsp<i>&ltupdate_field&gt</i>: string<br>}</code></td>
+        <td>
+          <b>Success:</b><br>
+          <code>{<br>&nbsppatch: true<br>}<br></code>
+          <b>Error:</b><br>
+          <code>
+            {<br>&nbsppatch: false<br>
+            &nbspdescription: string<br>}
+          </code>
+        </td>
+      </tr>
+      <tr>
+        <td>/delete</td>
+        <td>DELETE</td>
+        <td><code>{<br>&nbspuuid: string<br>}</code></td>
+        <td>
+          <b>Success:</b><br>
+          <code>{<br>&nbspdelete: true<br>}<br></code>
+          <b>Error:</b><br>
+          <code>
+            {<br>
+            &nbspdelete: false<br>
+            &nbspdescription: string<br>}
+          </code>
+        </td>
+      </tr>
+      <tr>
+        <td>/restore</td>
+        <td>GET</td>
+        <td><code>None</code></td>
+        <td>
+          <b>Success:</b><br>
+          <code>{<br>&nbsprestore: true<br>}<br></code>
+          <b>Error:</b><br>
+          <code>
+            {<br>
+            &nbsprestore: false<br>
+            &nbspdescription: string<br>}
+          </code>
+        </td>
+      </tr>
+    <table>
 </html>
