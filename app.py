@@ -16,14 +16,14 @@ def get_entry(json: dict) -> dict:
             database_handle.row_factory = Row
             cursor = database_handle.cursor()
             if json:
-                update_key = tuple(json.keys())[0]
-                if update_key not in (
+                search_key = tuple(json.keys())[0]
+                if search_key not in (
                     "uuid", "name", "email", "password", "dob", "address", "phone", "image"):
                         raise Exception(
-                            "Field with name '%s' not found."%(update_key))
+                            "Field with name '%s' not found."%(search_key))
                 cursor.execute("""
                     SELECT * FROM randomdb WHERE \"%s\"=\"%s\" LIMIT 1
-                """%(update_key, json[update_key]))
+                """%(search_key, json[search_key]))
             else:
                 cursor.execute("""
                     SELECT * FROM randomdb ORDER BY RANDOM() LIMIT 1
