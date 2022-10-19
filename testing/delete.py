@@ -12,7 +12,7 @@ def main(argv: list) -> int:
     DATA = {"uuid": argv[0]}
 
     try:
-        request_handle = post(url="https://127.0.0.1:5000/delete", json=DATA)
+        request_handle = post(url="http://127.0.0.1:5000/delete", json=DATA)
         print(request_handle.json())
 
         request_handle.close()
