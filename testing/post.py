@@ -5,10 +5,12 @@
 def main() -> int:
     from requests import get, post
 
+    GET_URL = "https://randomuser.me/api"
+    POST_URL = "http://127.0.0.1:5000/post"
     DATA = {}
 
     try:
-        get_handle = get("https://randomuser.me/api")
+        get_handle = get(url=GET_URL)
         json = get_handle.json()["results"][0]
         DATA = {
             "name": ' '.join((json["name"]["title"],
@@ -28,7 +30,7 @@ def main() -> int:
             "image": json["picture"]["large"]
         }
 
-        post_handle = post(url="http://127.0.0.1:5000/post", json=DATA)
+        post_handle = post(url=POST_URL, json=DATA)
         print(post_handle.json())
 
         get_handle.close()

@@ -9,10 +9,11 @@ def main(argv: list) -> int:
 
     from requests import post
 
+    URL = "http://127.0.0.1:5000/delete"
     DATA = {"uuid": argv[0]}
 
     try:
-        request_handle = post(url="http://127.0.0.1:5000/delete", json=DATA)
+        request_handle = post(url=URL, json=DATA)
         print(request_handle.json())
 
         request_handle.close()

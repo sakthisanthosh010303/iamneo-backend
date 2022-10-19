@@ -9,13 +9,14 @@ def main(argv: list) -> int:
 
     from requests import patch
 
+    URL = "http://127.0.0.1:5000/patch"
     DATA = {
         "uuid": argv[0],
         argv[1]: argv[2]
     }
 
     try:
-        request_handle = patch(url="http://127.0.0.1:5000/patch", json=DATA)
+        request_handle = patch(url=URL, json=DATA)
         print(request_handle.json())
 
         request_handle.close()
