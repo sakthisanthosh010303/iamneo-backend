@@ -3,6 +3,7 @@
 #
 # Backend Flask Application
 from flask import Flask, request, render_template
+from flask_cors import CORS, cross_origin
 from json import dumps
 from os import system
 from sqlite3 import connect, Row
@@ -129,12 +130,14 @@ def del_entry(uuid: str) -> dict:
         }
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def root():
     return render_template("index.html")
 
 @app.route("/get", methods=["GET", "POST"])
+@cross_origin(support_credentials=True)
 def get_handle() -> dict:
     if request.method == "POST":
         return get_entry(request.get_json())
