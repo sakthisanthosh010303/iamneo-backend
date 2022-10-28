@@ -92,7 +92,7 @@ def upd_entry(json: dict) -> dict:
         with connect("./static/db_final.db") as database_handle:
             cursor = database_handle.cursor()
             cursor.execute("""
-                    SELECT * FROM randomdb WHERE uuid=\"%s\"
+                SELECT * FROM randomdb WHERE uuid=\"%s\"
             """%(json["uuid"]))
             if not cursor.fetchone():
                 raise Exception("Entry with UUID '%s' not found."%(json["uuid"]))
@@ -113,7 +113,7 @@ def del_entry(uuid: str) -> dict:
         with connect("./static/db_final.db") as database_handle:
             cursor = database_handle.cursor()
             cursor.execute("""
-                    SELECT * FROM randomdb WHERE uuid=\"%s\"
+                SELECT * FROM randomdb WHERE uuid=\"%s\"
             """%(uuid))
             if not cursor.fetchone():
                 raise Exception("Entry with UUID '%s' not found."%(uuid))
