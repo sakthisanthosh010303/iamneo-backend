@@ -1,6 +1,8 @@
 # Author: Sakthi Santhosh
 # Created on: 14/10/2022
 #
+# argv: uuid
+#
 # Database Tester - Entry Retreiver
 def main(argv: list) -> int:
     if not argv:

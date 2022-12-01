@@ -1,17 +1,18 @@
 # Author: Sakthi Santhosh
 # Created on: 13/10/2022
 #
+# argv: search_key, search_value
+#
 # Flask Backend Server Tester - GET
 def main(argv: list) -> int:
     from requests import get, post
-
-    URL = "http://127.0.0.1:5000/get"
+    from config import URL
 
     try:
-        if argv:
-            request_handle = post(url=URL, json={argv[0]: argv[1]})
+        if len(argv) == 2:
+            request_handle = post(url=URL + "get", json={argv[0]: argv[1]})
         else:
-            request_handle = get(url=URL)
+            request_handle = get(url=URL + "get")
 
         print(request_handle.json())
         request_handle.close()

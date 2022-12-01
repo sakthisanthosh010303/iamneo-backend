@@ -1,22 +1,24 @@
 # Author: Sakthi Santhosh
 # Created on: 13/10/2022
 #
+# argv: uuid, key, new_value
+#
 # Flask Backend Server Tester - PATCH
 def main(argv: list) -> int:
-    if not argv:
+    if len(argv) < 3:
         print("Error: Program called with no data.")
         return 1
 
     from requests import patch
+    from config import URL
 
-    URL = "http://127.0.0.1:5000/patch"
     DATA = {
         "uuid": argv[0],
         argv[1]: argv[2]
     }
 
     try:
-        request_handle = patch(url=URL, json=DATA)
+        request_handle = patch(url=URL + "patch", json=DATA)
         print(request_handle.json())
 
         request_handle.close()

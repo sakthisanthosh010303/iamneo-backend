@@ -4,13 +4,10 @@
 # Flask Backend Server Tester - POST
 def main() -> int:
     from requests import get, post
-
-    GET_URL = "https://randomuser.me/api"
-    POST_URL = "http://127.0.0.1:5000/post"
-    DATA = {}
+    from config import URL
 
     try:
-        get_handle = get(url=GET_URL)
+        get_handle = get(url="https://randomuser.me/api")
         json = get_handle.json()["results"][0]
         DATA = {
             "name": ' '.join((json["name"]["title"],
@@ -30,7 +27,7 @@ def main() -> int:
             "image": json["picture"]["large"]
         }
 
-        post_handle = post(url=POST_URL, json=DATA)
+        post_handle = post(url=URL + "post", json=DATA)
         print(post_handle.json())
 
         get_handle.close()
