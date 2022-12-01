@@ -11,7 +11,7 @@ def main(argv: list) -> int:
 
     from sqlite3 import connect
 
-    with connect("./static/db_final.db") as database_handle:
+    with connect("./static/database.db") as database_handle:
         cursor = database_handle.cursor()
         cursor.execute("""
             SELECT * FROM randomdb WHERE uuid=\"%s\"
