@@ -19,7 +19,7 @@ def main() -> int:
 
     cursor.execute("""
         CREATE TABLE randomdb(
-            uuid CHAR(36) UNIQUE,
+            uuid CHAR(36) UNIQUE PRIMARY KEY,
             name VARCHAR(50),
             email VARCHAR(50),
             password VARCHAR(50),
@@ -30,7 +30,6 @@ def main() -> int:
         )""")
 
     try:
-        counter = 0
         request_handle = get("https://randomuser.me/api/?results=%d"%(RESULTS))
         json = request_handle.json()["results"]
         for datum in json:
@@ -55,7 +54,6 @@ def main() -> int:
                 datum["phone"],
                 datum["picture"]["large"]
             ))
-            counter += 1
         request_handle.close()
         database_handle.commit()
         database_handle.close()
@@ -63,7 +61,7 @@ def main() -> int:
         print("Error:", error)
         return 1
     else:
-        print(counter, "entries created. Exit.")
+        print("Info:", RESULTS, "entries created.")
         return 0
 
 
